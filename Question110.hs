@@ -43,23 +43,23 @@ myReverse  a = case a of
     [] -> []
     (x:xs) -> reverse xs ++ [x]
 
-{-- Question 6 Find out whether a list is a palindrome. A palindrome can be read forwards or backwards.
-
-isPalindrome :: [a] -> Bool
+-- Question 6 Find out whether a list is a palindrome. A palindrome can be read forwards or backwards.
+--https://stackoverflow.com/questions/16154592/haskell-no-instance-for-eq-a-arising-from-a-use-of
+isPalindrome :: Eq a => [a] -> Bool
 isPalindrome a
-    | [] == [] = True
+    | a == [] = True
     | myReverse a == a = True
     | otherwise        = False
-    -}
+    
 
 
-{-- Question 8 Eliminates consecutive duplicates of list element
-compress :: [a] -> [a]
+-- Question 8 Eliminates consecutive duplicates of list element
+compress :: Eq a => [a] -> [a]
 compress a = case a of
     [] -> []
     [x] -> [x]
     (x:y:xs)
         | (x == y)  -> compress (y:xs)
         | otherwise -> [x] ++ compress (y:xs)
- -}
+
  
